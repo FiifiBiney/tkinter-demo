@@ -26,7 +26,14 @@ class OurWindow:
         self.btnAdd = Button( win, text = "Add", command = self.add )
         self.btnAdd.place( x = 100, y = 150 ) #Setting up the position for the Add Button
         self.btnSubtract = Button( win, text = "Subtract", command = self.sub )
-        self.btnSubtract.place( x = 200, y = 150 ) #Setting up the position for the Subtract Button
+        self.btnSubtract.bind( "<Button-2>", self.sub )
+        self.btnSubtract.place( x = 150, y = 150 ) #Setting up the position for the Subtract Button
+        self.btnMultiply = Button( win, text = "Multiply", command = self.multiply )
+        self.btnMultiply.place( x =230, y = 150 )
+        self.btnDivide = Button( win, text = "Divide", command = self.divide)
+        self.btnDivide.place( x =300, y = 150 )
+
+
 
     #Defining our addition event
     def add(self):
@@ -45,6 +52,26 @@ class OurWindow:
         secondNumber= int( self.txtSnum.get() ) #Grabbing the input from the Second Number
 
         result = firstNumber - secondNumber #Performing the Subtraction
+
+        self.txtResult.insert( END, str( result ) )
+
+    #Defining our Multiplication event
+    def multiply(self):
+        self.txtResult.delete( 0, 'end' )
+        firstNumber= int( self.txtFnum.get() ) #Grabbing the input from the First Number
+        secondNumber= int( self.txtSnum.get() ) #Grabbing the input from the Second Number
+
+        result = firstNumber * secondNumber #Performing the Multiplication
+
+        self.txtResult.insert( END, str( result ) )
+
+    #Defining our Multiplication event
+    def divide(self):
+        self.txtResult.delete( 0, 'end' )
+        firstNumber= int( self.txtFnum.get() ) #Grabbing the input from the First Number
+        secondNumber= int( self.txtSnum.get() ) #Grabbing the input from the Second Number
+
+        result = firstNumber / secondNumber #Performing the Multiplication
 
         self.txtResult.insert( END, str( result ) )
 
